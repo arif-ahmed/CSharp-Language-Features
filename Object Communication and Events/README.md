@@ -16,47 +16,66 @@ All the delegates are implicitly derived from <code>System.Delegate</code> class
 ```
 
 ```csharp
-var numbers = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            public delegate int SomeDelegate(int x, int y);
+            Func<int, bool> IsEvenDelegate;
+            Action<int> NumberAppender;
 
-public delegate int SomeDelegate(int x, int y);
+            var numbers = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-SomeDelegate someDelegate = (x, y) =>
-{
-  return x * y;
-};
+            var evenNumbers = numbers.Where(number => number % 2 == 0);
+            evenNumbers = numbers.Where(IsEven);
 
-someDelegate += delegate (int x, int y)
-{
-  return x + y;
-};
+            var evenNumbers = numbers.Where(number => number % 2 == 0);
+            evenNumbers = numbers.Where(IsEven);
 
-someDelegate += someObject.SomeMethod;
+            IsEvenDelegate = IsEven;
+            evenNumbers = numbers.Where(IsEvenDelegate);
+
+            NumberAppender += Console.WriteLine;
+            NumberAppender += PrintNumber;
+            NumberAppender -= Console.WriteLine;
+
+            foreach (var evenNumber in evenNumbers)
+            {
+                NumberAppender(evenNumber);
+            }
+
+            someDelegate = (x, y) =>
+            {
+              return x * y;
+            };
+
+            someDelegate += delegate (int x, int y)
+            {
+              return x + y;
+            };
+
+            someDelegate += someObject.SomeMethod;
 
 
-static bool IsEven(int number)
-{
-  return number % 2 == 0;
-}
-        
-static void PrintNumber(int number)
-{
-  Console.WriteLine($"Number: {number}");
-}
+            static bool IsEven(int number)
+            {
+              return number % 2 == 0;
+            }
 
-static int Sum(int x, int y)
-{
-  return x + y;
-}
+            static void PrintNumber(int number)
+            {
+              Console.WriteLine($"Number: {number}");
+            }
 
-static int Subtrack(int x, int y)
-{
-  return x - y;
-}
+            static int Sum(int x, int y)
+            {
+              return x + y;
+            }
 
-static void DoWork(string message, Action<string> callback)
-{
-  Console.WriteLine($"Hello {message}");
-  callback(message);
-}
+            static int Subtrack(int x, int y)
+            {
+              return x - y;
+            }
 
+            static void DoWork(string message, Action<string> callback)
+            {
+              Console.WriteLine($"Hello {message}");
+              callback(message);
+            }
 ```
