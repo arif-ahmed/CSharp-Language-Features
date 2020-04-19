@@ -78,3 +78,9 @@ static void DoWork(string message, Action<string> callback)
   callback(message);
 }
 ```
+
+#### Built-in Delegate Types
+* <b>Action</b> is a delegate type that describes a method that does not return a value. 
+* <b>Func</b> is a delegate type that describes a method that returns a value.
+* <b>EventHandler</b> public delegate void EventHandler(object sender, EventArgs e);
+* <b>EventHandler<TEventArgs></b> public delegate void EventHandler<TEventArgs>(object sender, TEventArgs e);
