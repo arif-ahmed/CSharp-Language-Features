@@ -6,13 +6,13 @@ namespace KingsGambit
 {
     public class Footman
     {
-        public string Name { get; set; }
-
         public Footman(string name)
         {
             Name = name;
         }
-        public void PanickOnKingAttacked()
+
+        public string Name { get; set; }
+        public void KingUnderAttack()
         {
             Console.WriteLine($"Footman {Name} is Pancking!");
         }

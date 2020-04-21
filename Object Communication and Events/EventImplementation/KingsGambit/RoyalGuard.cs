@@ -6,15 +6,14 @@ namespace KingsGambit
 {
     public class RoyalGuard
     {
-        private readonly string _name;
         public RoyalGuard(string name)
         {
-            _name = name;
+            Name = name;
         }
-
-        public void DefendOnKingAttacked()
+        public string Name { get; set; }
+        public void KingUnderAttack()
         {
-            Console.WriteLine($"Royal Guard {_name} is Defending!");
+            Console.WriteLine($"Royal Guard {Name} is Defending!");
         }
     }
 }

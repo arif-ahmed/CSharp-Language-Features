@@ -18,7 +18,7 @@ namespace KingsGambit
         public void NotifyAttack()
         {
             Console.WriteLine($"King {Name} is under attack!");
-            OnKingAttacked();
+            OnKingAttacked?.Invoke();
         }
     }
 }
